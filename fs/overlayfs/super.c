@@ -265,7 +265,7 @@ bool ovl_is_whiteout(struct dentry *dentry)
 	return inode && IS_WHITEOUT(inode);
 }
 
-static bool ovl_is_opaquedir(struct dentry *dentry)
+bool ovl_is_opaquedir(struct dentry *dentry)
 {
 	int res;
 	char val;

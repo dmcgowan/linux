@@ -281,6 +281,9 @@ static int ovl_copy_up_locked(struct dentry *workdir, struct dentry *upperdir,
 	if (err)
 		goto out_cleanup;
 
+	if (ovl_is_opaquedir(newdentry))
+		ovl_remove_opaque(newdentry);
+
 	inode_lock(newdentry->d_inode);
 	err = ovl_set_attr(newdentry, stat);
 	inode_unlock(newdentry->d_inode);

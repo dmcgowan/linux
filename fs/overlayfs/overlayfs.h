@@ -194,6 +194,7 @@ int ovl_create_real(struct inode *dir, struct dentry *newdentry,
 		    struct kstat *stat, const char *link,
 		    struct dentry *hardlink, bool debug);
 void ovl_cleanup(struct inode *dir, struct dentry *dentry);
+void ovl_remove_opaque(struct dentry *upperdentry);
 
 /* copy_up.c */
 int ovl_copy_up(struct dentry *dentry);
@@ -201,3 +202,6 @@ int ovl_copy_up_one(struct dentry *parent, struct dentry *dentry,
 		    struct path *lowerpath, struct kstat *stat);
 int ovl_copy_xattr(struct dentry *old, struct dentry *new);
 int ovl_set_attr(struct dentry *upper, struct kstat *stat);
+
+/* super.c */
+bool ovl_is_opaquedir(struct dentry *dentry);
